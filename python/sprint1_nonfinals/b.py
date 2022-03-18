@@ -1,6 +1,5 @@
 def check_parity(a: int, b: int, c: int) -> bool:
-    # Здесь реализация вашего решения
-    pass
+    return a%2 == b%2 == c%2
 
 def print_result(result: bool) -> None:
     if result:
