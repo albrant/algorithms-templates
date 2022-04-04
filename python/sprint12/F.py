@@ -16,6 +16,7 @@ class Stack:
             return None
         return max(self.items)
 
+
 stack = Stack()
 n = int(input())
 for _ in range(n):
@@ -23,7 +24,7 @@ for _ in range(n):
     if action == 'pop':
         try:
             stack.pop()
-        except:
+        except Exception:
             print('error')
     elif action == 'get_max':
         print(stack.get_max())
