@@ -1,4 +1,4 @@
-# id = 66757931
+# id = 66774193
 
 class DequeIsEmptyPopError(Exception):
     pass
@@ -10,57 +10,51 @@ class DequeIsFullPushError(Exception):
 
 class Deque:
     def __init__(self, capacity):
-        self._items = [None] * capacity
-        self._capacity = capacity
-        self._head = 0
-        self._tail = -1
-        self._size = 0
-
-    def print(self):
-        print([self._size, self._head, self._tail], end=': ')
-        for i in range(self._head, self._tail + 1):
-            print(self._items[i], end='->')
-        print()
+        self.__items = [None] * capacity
+        self.__capacity = capacity
+        self.__head = 0
+        self.__tail = -1
+        self.__size = 0
 
     def is_empty(self):
-        return self._size == 0
+        return self.__size == 0
 
     def is_full(self):
-        return self._size == self._capacity
+        return self.__size == self.__capacity
 
     def push_back(self, item):
         if not self.is_full():
-            self._tail = (self._tail + 1) % self._capacity
-            self._items[self._tail] = item
-            self._size += 1
+            self.__tail = (self.__tail + 1) % self.__capacity
+            self.__items[self.__tail] = item
+            self.__size += 1
         else:
             raise DequeIsFullPushError
 
     def push_front(self, item):
         if not self.is_full():
-            self._head -= 1
-            self._items[self._head] = item
-            self._size += 1
+            self.__head -= 1
+            self.__items[self.__head] = item
+            self.__size += 1
         else:
             raise DequeIsFullPushError
 
     def pop_front(self):
         if self.is_empty():
             raise DequeIsEmptyPopError
-        x = self._items[self._head]
-        self._items[self._head] = None
-        self._head = (self._head + 1) % self._capacity
-        self._size -= 1
-        return x
+        head_item = self.__items[self.__head]
+        self.__items[self.__head] = None
+        self.__head = (self.__head + 1) % self.__capacity
+        self.__size -= 1
+        return head_item
 
     def pop_back(self):
         if self.is_empty():
             raise DequeIsEmptyPopError
-        x = self._items[self._tail]
-        self._items[self._tail] = None
-        self._tail -= 1
-        self._size -= 1
-        return x
+        tail_item = self.__items[self.__tail]
+        self.__items[self.__tail] = None
+        self.__tail -= 1
+        self.__size -= 1
+        return tail_item
 
 
 if __name__ == '__main__':
