@@ -1,4 +1,4 @@
-# id = 66726223
+# id = 66774159
 
 from operator import mul, floordiv, add, sub
 from typing import List
@@ -10,21 +10,21 @@ class StackIsEmptyPopError(Exception):
 
 class Stack:
     def __init__(self):
-        self._items = []
+        self.__items = []
 
     def push(self, item: int) -> None:
-        self._items.append(item)
+        self.__items.append(item)
 
     def pop(self) -> int:
-        if len(self._items) == 0:
+        if len(self.__items) == 0:
             raise StackIsEmptyPopError
         else:
-            return self._items.pop()
+            return self.__items.pop()
 
 
-def is_digit(n: str) -> bool:
+def is_digit(num_str: str) -> bool:
     try:
-        int(n)
+        int(num_str)
         return True
     except ValueError:
         return False
